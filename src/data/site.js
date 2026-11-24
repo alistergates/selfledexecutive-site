@@ -32,5 +32,6 @@ export const footer = [
   ]},
   { head: 'Elsewhere', links: [
     ['Couples & individual counselling ↗', 'https://alistergates.com/'],
+    ['LinkedIn ↗', 'https://www.linkedin.com/in/alistergates/'],
   ]},
 ];
