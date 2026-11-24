@@ -44,7 +44,7 @@ const schema = {
     },
     {
       '@type': 'Person', '@id': `${SITE}/#person`, name: 'Alister Gates', url: `${SITE}/about/`,
-      jobTitle: 'Executive coach and counsellor', image: `${SITE}/images/alister-gates.jpg`,
+      jobTitle: 'Executive coach and counsellor', image: `${SITE}/images/alister-jersey.jpg`,
       sameAs: ['https://alistergates.com/about/'],
       knowsAbout: ['Internal Family Systems', 'Executive coaching', 'Leadership development', 'Founder coaching', 'Nice Guy Syndrome'],
     },
@@ -52,8 +52,11 @@ const schema = {
 };
 ---
 <Base title={seo.title} description={seo.description} schema={schema}>
-  <section class="hero on-dark has-bg">
-    <div class="bg hero__bg" aria-hidden="true"><img src="/images/man-in-chair.webp" alt="" fetchpriority="high" decoding="async" /></div>
+  <section class="hero on-dark">
+    <picture class="hero__img" aria-hidden="true">
+      <source media="(max-width: 760px)" srcset="/images/alister-hero-m.webp" />
+      <img src="/images/alister-hero.webp" alt="" fetchpriority="high" decoding="async" />
+    </picture>
     <div class="wrap hero__inner stack">
       <p class="label">IFS for leaders · Online, worldwide</p>
       <h1 class="h1">Internal Family Systems, <em>for the people in charge.</em></h1>
@@ -117,7 +120,7 @@ const schema = {
       <div class="stack">
         <p class="label">04 — Your guide</p>
         <h2 class="h2">Someone who's <em>sat in your chair.</em></h2>
-        <figure class="guide__photo"><img src="/images/alister-gates.webp" width="1200" height="1500" alt="Alister Gates" loading="lazy" decoding="async" /></figure>
+        <figure class="guide__photo"><img src="/images/alister-jersey.webp" width="896" height="1088" alt="Alister Gates" loading="lazy" decoding="async" /></figure>
       </div>
       <div class="split__body">
         <p>I spent 35 years in business before I became a counsellor. I bought my first company at 25 and spent 15 years in IT, patenting and exporting software. In 2000 I started a software company and raised $16 million for it. It was ahead of its time and nearly didn't make it, until we moved into the market we were selling to. I've built and sold businesses, made payroll when I wasn't sure how, and carried the kind of stress you don't take home because there's nobody to hand it to.</p>
@@ -192,9 +195,18 @@ const schema = {
 </Base>
 
 <style>
-  .hero__inner { padding-block: clamp(88px, 14vw, 190px); max-width: 1100px; margin-left: auto; margin-right: auto; }
-  .hero__inner > * { max-width: 900px; }
-  .hero__bg img { object-position: 70% 40%; }
+  .hero { position: relative; isolation: isolate; overflow: hidden; background: #0B111B; }
+  .hero__img { position: absolute; inset: 0; z-index: -1; }
+  .hero__img img { width: 100%; height: 100%; object-fit: cover; object-position: 85% 30%; filter: saturate(0.85); }
+  .hero__img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(11,17,27,.92) 0%, rgba(11,17,27,.8) 42%, rgba(11,17,27,.1) 72%, rgba(11,17,27,0) 100%); }
+  .hero__inner { padding-block: clamp(88px, 12vw, 170px); }
+  .hero__inner > * { max-width: 640px; }
+  @media (max-width: 760px) {
+    .hero__img { position: relative; display: block; height: 62vh; min-height: 380px; }
+    .hero__img img { object-position: 60% 20%; }
+    .hero__img::after { background: linear-gradient(180deg, rgba(11,17,27,0) 55%, rgba(11,17,27,1) 100%); }
+    .hero__inner { padding-block: 8px 72px; }
+  }
   .hero__cta { display: flex; flex-wrap: wrap; align-items: center; gap: 18px 28px; margin-top: 10px; }
   .hero__cta .textlink { color: var(--paper); }
   .parts { grid-template-columns: repeat(3, 1fr); }
@@ -205,7 +217,7 @@ const schema = {
   .parts__self .h3 { font-style: normal; }
   .parts__note { max-width: 760px; }
   .guide__photo { margin: 18px 0 0; max-width: 380px; }
-  .guide__photo img { filter: grayscale(1) contrast(1.05); aspect-ratio: 4 / 5; object-fit: cover; width: 100%; }
+  .guide__photo img { aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 20%; width: 100%; }
   .creds { font-size: 16px; }
   .creds li { border-color: var(--rule) !important; }
   .shifts { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }

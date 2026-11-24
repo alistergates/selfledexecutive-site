@@ -18,10 +18,10 @@ const credentials = [
 ];
 const schema = {
   '@context': 'https://schema.org', '@type': 'ProfilePage',
-  mainEntity: { '@id': `${SITE}/#person`, '@type': 'Person', name: 'Alister Gates', url: `${SITE}/about/`, image: `${SITE}/images/alister-gates.jpg`, sameAs: ['https://alistergates.com/about/'] },
+  mainEntity: { '@id': `${SITE}/#person`, '@type': 'Person', name: 'Alister Gates', url: `${SITE}/about/`, image: `${SITE}/images/alister-office.jpg`, sameAs: ['https://alistergates.com/about/'] },
 };
 ---
-<Base title={seo.title} description={seo.description} schema={schema} image="/images/alister-gates.jpg">
+<Base title={seo.title} description={seo.description} schema={schema} image="/images/alister-office.jpg">
   <section class="on-dark">
     <div class="wrap section ab-hero">
       <div class="stack">
@@ -29,7 +29,7 @@ const schema = {
         <h1 class="h1">I came to this work <em>the long way round.</em></h1>
         <p class="lead">Thirty-five years in business, then a counselling degree, then Internal Family Systems. I'm Alister Gates. I coach leaders who are good at their jobs and tired of how much it's costing them.</p>
       </div>
-      <figure class="ab-photo"><img src="/images/alister-gates.webp" width="1200" height="1500" alt="Alister Gates" fetchpriority="high" decoding="async" /></figure>
+      <figure class="ab-photo"><img src="/images/alister-office.webp" width="896" height="1088" alt="Alister Gates" fetchpriority="high" decoding="async" /></figure>
     </div>
   </section>
 
@@ -81,7 +81,7 @@ const schema = {
 <style>
   .ab-hero { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); gap: 40px 72px; align-items: center; }
   .ab-photo { margin: 0; }
-  .ab-photo img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; filter: grayscale(1) contrast(1.05); }
+  .ab-photo img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 20%; }
   @media (max-width: 860px) { .ab-hero { grid-template-columns: 1fr; } .ab-photo { max-width: 360px; } }
   .creds li { border-color: var(--stone-rule) !important; }
   .small { font-size: 15px; color: var(--muted-2); }
