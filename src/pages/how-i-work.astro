@@ -1,0 +1,166 @@
+---
+import Base from '../layouts/Base.astro';
+import Final from '../components/Final.astro';
+import { SITE } from '../data/site.js';
+
+const seo = {
+  title: 'How I Work: IFS-Informed Executive Coaching and Founder Mentoring | Alister Gates',
+  description: 'What IFS-informed coaching with Alister Gates actually looks like: the shape of a session, the six ways he works (parts work, deeper healing, live coaching, founder mentoring, team dynamics, home front), and the 3-month programme.',
+};
+
+const session = [
+  ['Check in', "How's your system? What's going on around you, how you're sleeping, what the pressure is like this week. A leader in the middle of a crisis, or on their fourth flight this week, needs something different from one who's had a steady week."],
+  ['Contract', "\"What do you need most from today?\" If you've got a big meeting this afternoon, we're not opening old wounds. We'll get you clear and centred, and park the rest. If you've got room, we can go deeper."],
+  ['Bring something live', "The investor call, the co-founder who doubles down, the junior who's gone quiet, the fight at home on Sunday. Real situations, not hypotheticals."],
+  ['Slow it down', "Which part of you showed up? What was it afraid would happen? How old does it feel? This is where the pattern starts to make sense."],
+  ['Go where it needs to', "Sometimes that's deeper, to where the pattern started. Sometimes it's very practical: the strategy, the hire, the actual words you'll use on Tuesday. Often it's both in the same hour."],
+  ['Take it into the week', "One or two things to practise, a question to try with your team, occasionally some homework. Then we see what happened."],
+];
+
+const modes = [
+  { label: 'Parts work', title: 'Getting to know who\'s running you.', text: "The controller, the explainer, the pleaser, the critic. We get to know the protectors that take over under pressure: what sets them off, what they're trying to prevent, and what they need before they'll ease off." },
+  { label: 'Deeper healing', title: 'Going to where it started.', text: "When a pattern won't shift, it's usually guarding something older. With your consent, never forced, we go there: witnessing what happened, unburdening what you've carried, including what you inherited from your family." },
+  { label: 'Live coaching', title: 'In the moment, not just afterwards.', text: "If I notice you saying \"you\" when you mean \"I\", or reaching for a long explanation when a question would do, I'll stop you and we'll try it again. Small shifts in language change how people experience you." },
+  { label: 'Founder mentoring', title: 'A business head in the room.', text: "I've raised money, built and sold a software company, hired and fired, and sold internationally. When the issue is commercial, like the exit, the hire, where to base yourself or what to stop doing, you'll get a straight business view as well as the inner one." },
+  { label: 'Team and peers', title: 'The dynamics around you.', text: "The co-founder whose blaming language turns colleagues into children. The team stuck in rescuer and victim roles. We map the parts in your leadership team and your hardest client, and you learn to use parts language with your own people." },
+  { label: 'The home front', title: 'Where it all lands.', text: "Most leaders' pressure ends up at home. With my couples training (IFIO and the Developmental Model), I can help with the marriage and the kids as well as the company, because it's usually the same pattern in both." },
+];
+
+const tools = [
+  ['Before, during, after', 'A quick check-in before a hard meeting, a noticing during it, and a short review afterwards. It\'s the habit that turns three days of rumination into thirty minutes.'],
+  ['The six steps', 'Find, focus, flesh out, feel toward, befriend, and ask the part what it fears. A practice you can run on your own. See the <a href="/what-is-ifs/#six-steps">IFS guide</a>.'],
+  ['Parts language with your team', '"I notice part of you seems hesitant. What\'s it worried about?" It lowers the threat, so people tell you what\'s really going on.'],
+  ['The drama triangle', 'Spotting when you, your co-founder or your team slip into rescuer, persecutor or victim, and the coaching stance that gets everyone out.'],
+  ['I-statements', 'Speaking from your own experience instead of "you". People feel you rather than having to decode you.'],
+  ['Curiosity and generosity', 'Two words for hard conversations: get curious about what the other person is feeling, and give acknowledgement without making it about your failings.'],
+];
+
+const faqs = [
+  { q: 'Do I need to know anything about IFS first?', a: "No. If you're curious, read the IFS guide on this site, but you don't need the theory. You only need to be willing to look at what happens inside you under pressure." },
+  { q: 'Is this therapy?', a: "No. It's coaching that draws on IFS, alongside straight business mentoring. I'm also a trained counsellor, so I can go deeper when a pattern calls for it, and I'll tell you plainly if something needs a different kind of support." },
+  { q: 'How often do we meet?', a: 'Usually weekly to begin with. As things settle, most people move to fortnightly. The aim is for you to be able to do this yourself.' },
+  { q: 'Where do sessions happen?', a: "Online, on video, wherever you are: the office, home, or a hotel room at 6am before a pitch. I'm based in Zurich and work across European, Middle Eastern, US and Australasian time zones." },
+  { q: 'Is it confidential?', a: "Completely. Nothing is shared with your employer, board or anyone else. If your company pays, they get an invoice and nothing more." },
+  { q: 'What does it cost?', a: "It depends on the shape of the engagement and who's paying. Contact me and I'll give you the numbers in writing before you decide anything." },
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    { '@type': 'Service', name: 'IFS-informed executive coaching (The Self-Led Executive)', serviceType: 'Executive coaching', url: `${SITE}/how-i-work/`, description: seo.description, provider: { '@id': `${SITE}/#person` }, areaServed: ['Europe', 'United Kingdom', 'Switzerland', 'Middle East', 'United States', 'Australia', 'New Zealand'] },
+    { '@type': 'FAQPage', mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
+  ],
+};
+---
+<Base title={seo.title} description={seo.description} schema={schema}>
+  <section class="on-dark has-bg">
+    <div class="bg" aria-hidden="true"><img src="/images/man-at-window.webp" alt="" fetchpriority="high" decoding="async" /></div>
+    <div class="wrap section stack hw-hero">
+      <p class="label">How I work</p>
+      <h1 class="h1">The inner work, <em>with a business head in the room.</em></h1>
+      <p class="lead">Most leaders get either the inner work or the business advice. With me you get both in the same hour, because the pattern wrecking your board meeting is usually the one wrecking your Sunday night too.</p>
+      <p><a class="btn btn--light" href="/contact/">Book a 20-minute call</a></p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap section stack-lg">
+      <div class="split">
+        <div class="stack"><p class="label">01 — A session</p><h2 class="h2">What actually <em>happens.</em></h2></div>
+        <div class="split__body"><p>No two sessions are the same, but most follow a shape. We start where you are, agree what you need, and work with something real.</p></div>
+      </div>
+      <ol class="flow">
+        {session.map(([t, d], i) => <li><span class="flow__n">{String(i + 1).padStart(2, '0')}</span><span class="flow__t">{t}</span><span class="flow__d" set:html={d} /></li>)}
+      </ol>
+    </div>
+  </section>
+
+  <section class="on-dark">
+    <div class="wrap section stack-lg">
+      <div class="split">
+        <div class="stack"><p class="label">02 — Six ways I work</p><h2 class="h2">I move between them <em>as you need.</em></h2></div>
+        <div class="split__body"><p>A typical hour might start with parts work on a reaction from Monday, move into a straight conversation about the business, and finish with what to say to your partner tonight. That range is the point.</p></div>
+      </div>
+      <div class="grid modes">
+        {modes.map((m) => <div class="cell"><p class="label">{m.label}</p><h3 class="h3">{m.title}</h3><p>{m.text}</p></div>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="tone-stone">
+    <div class="wrap section stack-lg">
+      <div class="split">
+        <div class="stack"><p class="label">03 — What you take away</p><h2 class="h2">Tools that work <em>on a Tuesday.</em></h2></div>
+        <div class="split__body"><p>Insight's good. Something you can actually do in the next meeting is better. These are the practices leaders use most.</p></div>
+      </div>
+      <div class="grid tools">
+        {tools.map(([t, d]) => <div class="cell"><h3 class="h3">{t}</h3><p set:html={d} /></div>)}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap section split">
+      <div class="stack"><p class="label">04 — How I show up</p><h2 class="h2">Warm, <em>and straight with you.</em></h2></div>
+      <div class="split__body">
+        <p>Leaders get a lot of careful feedback. I'm not careful in that way. If I think your co-founder's language is manipulative, I'll say so. If your plan to sell the company in a hurry doesn't add up, I'll tell you, and tell you what I'd do instead. If you're doing well, you'll hear that too.</p>
+        <p>None of it comes from judgement. Every part of you is doing its best, and so is every person you're struggling with. But being kind and being clear aren't opposites, and you don't need another person in your life telling you what you want to hear.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="tone-stone" id="programme">
+    <div class="wrap section stack-lg">
+      <div class="split">
+        <div class="stack"><p class="label">05 — The programme</p><h2 class="h2">The Self-Led <em>Executive.</em></h2></div>
+        <div class="split__body">
+          <p>Most leaders start with a three-month programme: ten one-to-one sessions on video, weekly at first, then spaced out as the changes settle. Many carry on fortnightly after that. The aim is always that you can do this yourself.</p>
+          <p>Fees depend on the shape of the engagement and whether you or your company is paying. Corporate invoicing is available, and plenty of leaders fund it themselves and keep it entirely private.</p>
+          <p><a class="btn" href="/contact/">Contact me for pricing</a></p>
+        </div>
+      </div>
+      <ol class="arc">
+        <li><span class="label">Weeks 1–4</span><span class="arc__t">Map the system.</span><span>Which parts run you under pressure, what sets them off and what they're afraid of. Most leaders find this a relief on its own, because the pattern finally makes sense.</span></li>
+        <li><span class="label">Weeks 5–8</span><span class="arc__t">Earn their trust.</span><span>Go underneath the loudest protectors to what they're guarding. You'll notice yourself choosing instead of reacting: in meetings, in disputes, at home.</span></li>
+        <li><span class="label">Weeks 9–12</span><span class="arc__t">Lead from Self.</span><span>Take it into the places that matter, like the hard conversation, the way you run the leadership team and the big decision. Then build what keeps it going once we finish.</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap section split">
+      <div class="stack"><p class="label">06 — Questions</p><h2 class="h2">The practical <em>stuff.</em></h2></div>
+      <div class="split__body faq">
+        {faqs.map((f) => <details><summary>{f.q}</summary><p>{f.a}</p></details>)}
+      </div>
+    </div>
+  </section>
+
+  <Final heading="Start with" em="twenty minutes." text="Bring whatever's most alive for you right now. You'll get a feel for how I work, and an honest view on whether it's the right work at the right time." />
+</Base>
+
+<style>
+  .hw-hero { padding-block: clamp(88px, 12vw, 160px); }
+  .hw-hero > * { max-width: 900px; }
+  .flow { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
+  .flow li { display: grid; grid-template-columns: 56px minmax(160px, 3fr) minmax(0, 7fr); gap: 8px 28px; padding: 22px 0; border-bottom: 1px solid var(--rule); align-items: baseline; }
+  .flow__n { font-family: var(--mono); color: var(--brass); }
+  .flow__t { font-family: var(--serif); font-size: clamp(26px, 2.4vw, 32px); line-height: 1.1; }
+  .flow__d { color: var(--muted); }
+  @media (max-width: 760px) { .flow li { grid-template-columns: 40px 1fr; } .flow__d { grid-column: 2; } }
+  .modes, .tools { grid-template-columns: repeat(3, 1fr); }
+  @media (max-width: 980px) { .modes, .tools { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .modes, .tools { grid-template-columns: 1fr; } }
+  .arc { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--stone-rule); border: 1px solid var(--stone-rule); }
+  .arc li { background: var(--stone); padding: clamp(24px, 3vw, 36px); display: flex; flex-direction: column; gap: 10px; }
+  .arc li span:last-child { color: var(--muted); }
+  .arc__t { font-family: var(--serif); font-size: clamp(28px, 2.6vw, 36px); line-height: 1.1; }
+  @media (max-width: 860px) { .arc { grid-template-columns: 1fr; } }
+  .faq details { border-top: 1px solid var(--rule); padding: 18px 0; }
+  .faq details:last-of-type { border-bottom: 1px solid var(--rule); }
+  .faq summary { cursor: pointer; font-family: var(--serif); font-size: 26px; line-height: 1.2; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: '+'; font-family: var(--mono); color: var(--brass); }
+  .faq details[open] summary::after { content: '–'; }
+  .faq details p { margin-top: 12px; color: var(--muted); }
+</style>

@@ -1,6 +1,6 @@
 import { posts } from '../data/posts';
 const site = 'https://selfledexecutive.com';
-const pages = ['/', '/approach/', '/work-with-me/', '/about/', '/journal/', '/contact/', '/privacy-policy/'];
+const pages = ['/', '/what-is-ifs/', '/how-i-work/', '/outcomes/', '/ifs-glossary/', '/about/', '/journal/', '/contact/', '/privacy-policy/'];
 const today = new Date().toISOString().slice(0, 10);
 export function GET() {
   const urls = [

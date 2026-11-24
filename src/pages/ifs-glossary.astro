@@ -1,0 +1,81 @@
+---
+import Base from '../layouts/Base.astro';
+import Final from '../components/Final.astro';
+import { SITE } from '../data/site.js';
+
+const seo = {
+  title: 'IFS Glossary for Leaders: Internal Family Systems Terms Explained',
+  description: 'Plain-English definitions of Internal Family Systems (IFS) terms such as parts, Self, managers, firefighters, exiles, blending, unburdening, legacy burdens and the 8 Cs, each with a leadership example.',
+};
+
+const terms = [
+  ['Internal Family Systems (IFS)', 'A model of the mind developed by Dr Richard Schwartz, in which the mind is a system of parts led, at its best, by a core Self.', 'The lens that explains why a capable leader keeps repeating a pattern they understand perfectly well.'],
+  ['Part', 'A sub-personality with its own feelings, beliefs and job. Everyone has many.', '"Part of me wants to fire him today. Part of me wants to give him one more chance."'],
+  ['Multiplicity', 'The idea that having many parts is normal and healthy, not a sign that something is wrong.', 'Your inner leadership team disagrees. That\'s not dysfunction. It\'s a team that needs leading.'],
+  ['Self', 'The core of a person: calm, curious and clear. It isn\'t a part, and it can\'t be damaged, only obscured.', 'The version of you that can sit in a hostile board meeting without needing to win it.'],
+  ['Self-energy', 'The felt presence of Self, recognisable by the 8 Cs.', 'The steadiness people notice when you walk into a crisis.'],
+  ['Self-leadership', 'Being led from Self rather than by whichever part is loudest. It\'s the aim of IFS, and the root of this site\'s name.', 'Choosing your response in the meeting, rather than finding out afterwards what you did.'],
+  ['Protector', 'A part whose job is to keep you from feeling pain. There are two kinds: managers and firefighters.', 'The over-preparer, the pleaser, the one who has to be right.'],
+  ['Manager', 'A proactive protector that tries to keep things under control so pain never surfaces.', 'The perfectionist who rewrites the deck at midnight. The explainer who can\'t let the team find its own way.'],
+  ['Firefighter', 'A reactive protector that acts fast to stop pain once it breaks through, whatever the cost.', 'The flash of anger in the meeting, the third drink, walking out for five hours.'],
+  ['Exile', 'A younger, vulnerable part carrying old hurt such as fear, shame or rejection, which the protectors keep out of sight.', 'The kid who learned that a parent\'s anger meant something unfixable had happened.'],
+  ['Burden', 'A painful belief or feeling a part took on from an experience, such as "I\'m not good enough" or "anger breaks things". It isn\'t the part\'s true nature.', '"If I disappoint people, I\'ll be discarded", carried into every performance conversation.'],
+  ['Legacy burden', 'A burden inherited from family, culture or history rather than from your own experience.', 'A father\'s shame about money, picked up so early it feels like your own drive.'],
+  ['Blending', 'When a part\'s feelings and beliefs take over so completely that they feel like yours.', 'You\'re not noticing anxiety. You are anxious, and it\'s making the decisions.'],
+  ['Unblending', 'Separating enough from a part to notice it, so that Self can lead.', '"Ah, there\'s the part that wants to defend myself." Half a step back, and you have a choice again.'],
+  ['Trailhead', 'A reaction, sensation or situation that leads you to a part worth getting to know.', 'The tightness in your chest every time a particular client calls.'],
+  ['Target part', 'The part you\'re focusing on at a given moment in the work.', 'This week, the part that goes quiet when your co-founder raises his voice.'],
+  ['Polarisation', 'Two protectors locked in opposition, each believing it must fight the other.', 'The part that wants to sell the company tomorrow against the part that can\'t let it go.'],
+  ['Self-like part', 'A part that imitates Self, often sounding calm and reasonable while still pursuing its own agenda.', 'The very rational part that "just wants to understand the root cause" so it never has to feel anything.'],
+  ['Backlash', 'A protector\'s reaction after it feels exposed, such as a spike of anxiety or self-criticism following a breakthrough.', 'A great session on Tuesday, a brutal inner critic on Wednesday.'],
+  ['The 6 Fs', 'Six steps for getting to know a protector: find, focus, flesh out, feel toward, befriend, and its fears.', 'A practice you can run alone in ten minutes before a hard meeting.'],
+  ['The 8 Cs', 'Qualities of Self: calm, curiosity, clarity, compassion, confidence, courage, creativity and connectedness.', 'A good working description of the leader people actually want to follow.'],
+  ['The 5 Ps', 'Further qualities of Self: presence, patience, perspective, persistence and playfulness.', 'What lets you stay with a long, uncomfortable negotiation.'],
+  ['Witnessing', 'Self listening to an exile until it feels fully seen and understood.', 'Often the moment a long-standing pattern finally starts to loosen.'],
+  ['Retrieval', 'Helping an exile leave the time and place where it got stuck.', 'Letting the part that\'s still back in the family kitchen know it\'s safe to come to the present.'],
+  ['Unburdening', 'The release of a burden, often imagined as giving it to light, water, fire or earth, after which the part can take on a new role.', '"That meeting just didn\'t get to me the way it used to."'],
+  ['Invitation', 'After unburdening, inviting in qualities the part needs now, such as joy, confidence or curiosity.', 'Replacing "I\'m not enough" with curiosity and fun, at work and with the kids.'],
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'DefinedTermSet', name: 'IFS glossary for leaders', url: `${SITE}/ifs-glossary/`, description: seo.description,
+  hasDefinedTerm: terms.map(([t, d]) => ({ '@type': 'DefinedTerm', name: t, description: d, url: `${SITE}/ifs-glossary/#${t.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}` })),
+};
+const slug = (t: string) => t.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+---
+<Base title={seo.title} description={seo.description} schema={schema}>
+  <section class="on-dark">
+    <div class="wrap section stack gl-hero">
+      <p class="label">Reference</p>
+      <h1 class="h1">IFS glossary <em>for leaders.</em></h1>
+      <p class="lead">Every Internal Family Systems term you're likely to meet, in a sentence or two, with what it looks like at work. New to IFS? Start with the <a href="/what-is-ifs/">plain guide</a>.</p>
+    </div>
+  </section>
+  <section>
+    <div class="wrap section">
+      <dl class="gl">
+        {terms.map(([t, d, e]) => (
+          <div class="gl__row" id={slug(t)}>
+            <dt class="gl__t">{t}</dt>
+            <dd class="gl__d"><p>{d}</p><p class="gl__e"><span class="label">At work</span> {e}</p></dd>
+          </div>
+        ))}
+      </dl>
+      <p class="gl__note">Internal Family Systems and IFS are associated with the IFS Institute. These definitions are my own plain-English versions. I'm IFS-trained, but not affiliated with or endorsed by the Institute.</p>
+    </div>
+  </section>
+  <Final heading="Terms are one thing." em="Seeing your own parts is another." text="A 20-minute call is the quickest way to find out what IFS might show you about how you lead." />
+</Base>
+<style>
+  .gl-hero { padding-block: clamp(72px, 10vw, 130px); }
+  .gl-hero .lead a { color: var(--brass-light); }
+  .gl { margin: 0; border-top: 1px solid var(--rule); }
+  .gl__row { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 8px 48px; padding: 24px 0; border-bottom: 1px solid var(--rule); }
+  .gl__t { font-family: var(--serif); font-size: clamp(26px, 2.4vw, 32px); line-height: 1.1; }
+  .gl__d { margin: 0; display: flex; flex-direction: column; gap: 10px; font-size: 18px; }
+  .gl__e { color: var(--muted); font-size: 16px; }
+  .gl__e .label { margin-right: 8px; }
+  .gl__note { margin-top: 28px; font-size: 15px; color: var(--muted-2); max-width: 760px; }
+  @media (max-width: 760px) { .gl__row { grid-template-columns: 1fr; } }
+</style>

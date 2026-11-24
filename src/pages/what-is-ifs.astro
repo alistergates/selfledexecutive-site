@@ -1,0 +1,196 @@
+---
+import Base from '../layouts/Base.astro';
+import Final from '../components/Final.astro';
+import SystemMap from '../components/diagrams/SystemMap.astro';
+import { SITE } from '../data/site.js';
+
+const seo = {
+  title: 'What Is IFS? Internal Family Systems Explained for Leaders',
+  description: 'A plain-language guide to Internal Family Systems (IFS) for founders, CEOs and senior leaders: parts, protectors, exiles and Self, how the six steps work, unburdening, and how IFS changes the way you lead.',
+};
+
+const toc = [
+  ['short-answer', 'The short answer'],
+  ['origins', 'Where IFS came from'],
+  ['map', 'The map: Self, protectors and exiles'],
+  ['blending', 'Blending: when a part takes the chair'],
+  ['self', 'Self, and the eight Cs'],
+  ['six-steps', 'How the work happens: six steps'],
+  ['deeper', 'Going deeper: exiles and unburdening'],
+  ['legacy', 'Legacy burdens: what you inherited'],
+  ['others', "Other people's parts: your team, board and clients"],
+  ['compared', 'IFS compared with coaching, CBT and mindfulness'],
+  ['evidence', 'What the evidence says'],
+  ['therapy', 'Is IFS coaching therapy?'],
+  ['faq', 'Questions leaders ask'],
+  ['reading', 'Further reading'],
+];
+
+const faqs = [
+  { q: 'What does IFS stand for?', a: 'IFS stands for Internal Family Systems, a model of the mind developed by Dr Richard Schwartz in the 1980s. It describes the mind as a system of parts led, at its best, by a core Self.' },
+  { q: 'Is IFS only for people with trauma?', a: "No. IFS began as a therapy and is widely used for trauma, but its basic idea, that we're made of parts and can lead them from a calm centre, applies to anyone. Leaders use it for conflict, decision-making, delegation, anxiety under pressure and the patterns they can't think their way out of." },
+  { q: 'Do I need to believe in parts for it to work?', a: "No. Most leaders treat it as a practical description at first: \"part of me wants to push, part of me wants to pull back.\" You don't need to adopt a theory. You only need to be willing to notice what goes on inside you and get curious about it." },
+  { q: 'How long does it take to see a difference?', a: 'Many leaders notice something within the first few sessions, usually the ability to catch a reaction as it starts rather than afterwards. Deeper shifts, where an old pattern stops firing, tend to take a few months of steady work.' },
+  { q: 'Can I do IFS on my own?', a: "Yes, to a point. The six steps on this page are a practice you can use alone, before a hard meeting or after a bad one. Working with a trained practitioner helps most with the parts that are hardest to see from the inside, and with the deeper unburdening work." },
+  { q: 'Is IFS the same as "inner child" work?', a: "There's overlap, but IFS is broader. It works with the protective parts that run your adult life, like the controller, the critic and the pleaser, as well as the younger parts they protect, and it does so from Self rather than by willpower." },
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Article', headline: 'What Is IFS? Internal Family Systems Explained for Leaders', description: seo.description,
+      mainEntityOfPage: `${SITE}/what-is-ifs/`, author: { '@id': `${SITE}/#person`, '@type': 'Person', name: 'Alister Gates' },
+      publisher: { '@id': `${SITE}/#business` }, datePublished: '2026-11-24', dateModified: '2026-11-24', image: `${SITE}/images/og.jpg`,
+      about: [{ '@type': 'Thing', name: 'Internal Family Systems' }, { '@type': 'Thing', name: 'Leadership development' }],
+    },
+    { '@type': 'FAQPage', mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
+  ],
+};
+---
+<Base title={seo.title} description={seo.description} schema={schema} type="article">
+  <section class="on-dark">
+    <div class="wrap section stack ifs-hero">
+      <p class="label">The guide · Internal Family Systems for leaders</p>
+      <h1 class="h1">What is IFS? <em>A plain guide for people who lead.</em></h1>
+      <p class="lead">Internal Family Systems is the most useful map of the mind I've come across, in thirty-five years of business and in the counselling room. Here's how it works and why it matters when you're the one in charge. No jargon you don't need.</p>
+      <p class="ifs-by">By Alister Gates · IFS-trained coach and counsellor · about 20 minutes to read</p>
+    </div>
+  </section>
+
+  <div class="wrap section ifs-layout">
+    <nav class="ifs-toc" aria-label="On this page">
+      <p class="label">On this page</p>
+      <ol>{toc.map(([id, t]) => <li><a href={`#${id}`}>{t}</a></li>)}</ol>
+    </nav>
+
+    <article class="prose ifs-body">
+      <h2 id="short-answer">The short answer</h2>
+      <p><strong>Internal Family Systems (IFS) is a model of the mind developed by Dr Richard Schwartz. It sees each of us as made up of many "parts", sub-personalities with their own jobs, beliefs and fears, plus a core "Self" that is calm, clear and naturally able to lead them.</strong></p>
+      <p>For a leader, it works like this. The reactions that trip you up, like the snap in the board meeting, the conversation you keep avoiding or the inability to delegate, aren't character flaws. They're parts of you doing a job they learned long ago, often very well. IFS gives you a way to get to know those parts, understand what they're protecting, and put a steadier version of you back in charge.</p>
+      <p>That's why I call it self-leadership. Before you lead a team, a company or a board, you're already leading a team inside.</p>
+
+      <h2 id="origins">Where IFS came from</h2>
+      <p>Schwartz was a family therapist in the 1980s, trained to see families as systems where each member plays a role. He kept hearing clients describe their inner lives in the same way: "a part of me knows I should stop, but another part just takes over." So he started treating the inside of a person like a family too, with members who have roles, alliances and conflicts, and a natural leader who can bring them into balance.</p>
+      <p>Over forty years it has grown from a fringe idea into one of the most widely practised approaches in therapy. Increasingly, coaches use it with leaders, because it explains what most leadership development skips: why capable, intelligent people keep doing things they know aren't working.</p>
+
+      <h2 id="map">The map: Self, protectors and exiles</h2>
+      <p>IFS describes three kinds of inner players. Once you see them, you'll recognise them everywhere, in yourself, in your leadership team and across the boardroom table.</p>
+      <figure class="ifs-fig"><SystemMap /><figcaption>The IFS map. Protectors work hard to keep the exiles' pain from surfacing. Self, at the centre, can lead all of them.</figcaption></figure>
+      <h3>Protectors: managers</h3>
+      <p>Managers are the proactive protectors. They try to keep you safe by keeping things under control in advance. In leaders they're often the parts that got you promoted: the planner, the perfectionist, the one who checks everything, the explainer who makes sure everyone understands, the pleaser who keeps the board happy, the inner critic who drives the standard up.</p>
+      <p>They're hard-working and usually very competent. The trouble is that they don't switch off, and they don't trust anyone else to hold things, including you.</p>
+      <h3>Protectors: firefighters</h3>
+      <p>Firefighters are the reactive protectors. When pain breaks through despite the managers' best efforts, firefighters act fast to make it stop. In leadership life that might be the flash of anger in a meeting, the third glass of wine, the late-night scroll, the impulsive deal, or simply walking out. They get relief quickly and don't care much about the mess they leave behind.</p>
+      <h3>Exiles</h3>
+      <p>Exiles are the younger, more vulnerable parts that carry old hurt: fear, shame, the sense of not being good enough, of being discarded, of being too much. The protectors work so hard precisely to keep those feelings from surfacing. Often you can't see the exile at all. You only see how hard the protectors are working.</p>
+      <blockquote>A leader who can't stop over-preparing usually isn't protecting the presentation. They're protecting a much younger part that once learned being caught out was dangerous.</blockquote>
+
+      <h2 id="blending">Blending: when a part takes the chair</h2>
+      <p>The single most useful idea in IFS for a working leader is <strong>blending</strong>. When you're blended with a part, its feelings and beliefs feel like yours. You don't think "a part of me is anxious." You just are anxious, and the anxiety is making the decisions.</p>
+      <p>You can usually tell you're blended when:</p>
+      <ul>
+        <li>your reaction is bigger than the situation deserves;</li>
+        <li>you're replaying a conversation hours later, trying to work out the perfect answer;</li>
+        <li>you hear yourself explaining, defending or justifying, and you can't stop;</li>
+        <li>the same situation produces the same reaction, no matter how well you understand it;</li>
+        <li>people around you go quiet, or start managing you.</li>
+      </ul>
+      <p><strong>Unblending</strong> is the skill of separating enough from the part to notice it: "Ah, there's the part that wants to win this." You don't push it away. You step back half a pace, and suddenly you have a choice again. With practice, leaders move from noticing the next day, to noticing during the meeting, to noticing before it starts. That shift, from reacting to choosing, is the first real change most of my clients feel.</p>
+
+      <h2 id="self">Self, and the eight Cs</h2>
+      <p>When parts unblend, what's left isn't a blank. It's what IFS calls <strong>Self</strong>, which isn't a part, and isn't something you need to build. It's the you that shows up on your best days: steady in a tense meeting, able to hear criticism without collapsing or counter-attacking, clear about what matters.</p>
+      <p>Schwartz describes Self through eight qualities, often called the eight Cs:</p>
+      <ul class="ifs-cs">
+        <li><strong>Calm</strong>: steady when the pressure spikes</li>
+        <li><strong>Curiosity</strong>: asking before judging, of yourself and others</li>
+        <li><strong>Clarity</strong>: seeing the situation as it is, not as your fear paints it</li>
+        <li><strong>Compassion</strong>: for your people, and for the parts of you that are struggling</li>
+        <li><strong>Confidence</strong>: the quiet kind that doesn't need to win</li>
+        <li><strong>Courage</strong>: saying the true thing</li>
+        <li><strong>Creativity</strong>: what becomes possible when the noise drops</li>
+        <li><strong>Connectedness</strong>: actually present with the person in front of you</li>
+      </ul>
+      <p>He also talks about five Ps of Self: presence, patience, perspective, persistence and playfulness. You'll notice none of these is a technique. They're what's left when the inner team stops fighting for the chair.</p>
+
+      <h2 id="six-steps">How the work happens: six steps</h2>
+      <p>In IFS, getting to know a protector follows a simple sequence, often called the six Fs. It's the backbone of what we do in sessions, and it's a practice you can use on your own, before a hard conversation or after one that went badly.</p>
+      <ol class="ifs-steps">
+        <li><strong>Find it.</strong> Notice the part. Where do you feel it: a tight chest, a hot face, a racing mind? What's it saying?</li>
+        <li><strong>Focus on it.</strong> Turn your attention towards it rather than away. Just notice it, without arguing with it.</li>
+        <li><strong>Flesh it out.</strong> Get to know it. What does it look or feel like? How old does it seem? What is it trying to make happen?</li>
+        <li><strong>Feel toward it.</strong> Check how you feel towards the part. If you're annoyed or scared of it, another part has blended. Ask that one to step back until you can feel curious.</li>
+        <li><strong>Befriend it.</strong> Ask how it came to do this job, and how long it has been doing it. Let it know you see how hard it works.</li>
+        <li><strong>Find its fear.</strong> Ask: "What are you afraid would happen if you stopped doing this?" This is usually where it opens up. Most protectors are trying to prevent something they believe would be catastrophic: humiliation, rejection, collapse.</li>
+      </ol>
+      <p>Here's what that sounds like with a leader. A founder notices that in every exec meeting he ends up explaining the strategy again, at length. <em>Find:</em> a pressure in his chest and a rush to fill the silence. <em>Flesh out:</em> it's the explainer, it feels about fourteen, and it needs people to see he knows his stuff. <em>Fear:</em> if he stops explaining, they'll discover he doesn't deserve the job. Once that's in the open, and the part feels understood rather than criticised, it can ease off. He starts asking questions instead. His team, given room, starts to step up.</p>
+      <p>Often, acknowledging the part and thanking it is enough for it to relax. Sometimes it wants a new job, like coach instead of critic. And sometimes it's guarding something deeper.</p>
+
+      <h2 id="deeper">Going deeper: exiles and unburdening</h2>
+      <p>When protectors trust that Self is in charge, they'll often allow access to the exile they've been guarding. This is where IFS is different from most coaching, and where the lasting change comes from.</p>
+      <p>The process is gentle and always done with the protectors' permission. Self gets to know the younger part and <strong>witnesses</strong> what happened to it, so it finally feels seen. Then the part is helped to let go of the beliefs and feelings it has been carrying, such as "I'm not good enough" or "anger means everything breaks". IFS calls this <strong>unburdening</strong>. Leaders often describe the result in very ordinary terms: "That meeting just didn't get to me the way it used to."</p>
+      <p>Once the exile is unburdened, the protectors no longer need to work so hard. The controller can delegate. The pleaser can say no. The critic can become a decent coach.</p>
+
+      <h2 id="legacy">Legacy burdens: what you inherited</h2>
+      <p>Not everything we carry is our own. IFS describes <strong>legacy burdens</strong>: beliefs, fears and feelings passed down through families and cultures. They might be about money ("we're never quite enough"), anger ("it's dangerous"), status ("we don't belong here"), or work ("rest is laziness").</p>
+      <p>Many leaders are surprised to discover that the pressure they feel isn't entirely theirs. It was a father's shame about providing, or a mother's anxiety about appearances, absorbed so early it felt like their own personality. Legacy unburdening helps you hand back what was never yours to carry. It also helps you stop passing it on to your own children, and to the culture of the company you lead.</p>
+
+      <h2 id="others">Other people's parts: your team, board and clients</h2>
+      <p>Once you can see parts in yourself, you start seeing them in everyone. The client who's in constant complaint, the co-founder who doubles down, the junior who goes silent in meetings: each one is usually a protector doing its job.</p>
+      <p>This changes how you lead. Instead of "why won't you speak up?", which tends to make the protector dig in, you can try "I notice part of you seems hesitant to raise this. What's it worried about?" It lowers the threat, invites honesty and gets to the real issue faster. In negotiations and difficult client relationships, asking yourself "what part of them is running this?" gives you something far more useful than frustration.</p>
+      <p>It also shows you the dynamics in a leadership team. You can see who's in a protective role, which parts are colliding, and how a leader's own protectors shape the culture underneath them.</p>
+
+      <h2 id="compared">IFS compared with coaching, CBT and mindfulness</h2>
+      <p><strong>Traditional executive coaching</strong> works mostly on what you do: goals, behaviours, skills, feedback. That's valuable. IFS works on who's doing it. When the part that keeps hijacking you settles, a lot of behaviour change takes care of itself. In my work the two sit side by side.</p>
+      <p><strong>CBT</strong> (cognitive behavioural therapy) helps you challenge unhelpful thoughts. IFS takes a different stance: rather than disputing the thought, it gets curious about the part that holds it, because that part usually has a good reason.</p>
+      <p><strong>Mindfulness</strong> builds the capacity to observe your experience, and it pairs naturally with IFS. One leader I work with put it well: IFS is like meditation's habit of stepping back, with a method for what to do once you have.</p>
+
+      <h2 id="evidence">What the evidence says</h2>
+      <p>I'd rather be straight with you here. IFS has a young but growing research base, almost all of it clinical rather than in leadership settings. A 2013 randomised controlled trial in people with rheumatoid arthritis found improvements in pain, physical function, self-compassion and depressive symptoms, some of them still there a year later. Smaller studies have looked at depression and PTSD, with encouraging results. In 2015 IFS was listed as an evidence-based practice on the US National Registry of Evidence-based Programs and Practices.</p>
+      <p>The leadership application is newer and practitioner-led, and the evidence for it is what you'd expect: case experience rather than large trials. My view, after years of using it, is that it gets to the root of patterns faster than anything else I've tried. Judge it by whether it changes how you show up on Monday.</p>
+
+      <h2 id="therapy">Is IFS coaching therapy?</h2>
+      <p>No. IFS-informed coaching uses the model to help you lead: your decisions, your relationships at work and at home, and the patterns that get in the way. It isn't treatment for a mental health condition.</p>
+      <p>I'm unusual in that I'm both a trained counsellor and a coach with a long business career. That means I can go deeper than most coaches when a pattern needs it, and I'll tell you plainly if something needs a different kind of support. It also means that alongside the inner work you get someone who's built companies, raised money and sat in your chair.</p>
+
+      <h2 id="faq">Questions leaders ask</h2>
+      <div class="ifs-faq">{faqs.map((f) => <details><summary>{f.q}</summary><p>{f.a}</p></details>)}</div>
+
+      <h2 id="reading">Further reading</h2>
+      <ul>
+        <li><strong>No Bad Parts</strong> by Richard Schwartz (2021). The most accessible introduction, and the book most of my clients start with.</li>
+        <li><strong>Internal Family Systems Therapy</strong>, 2nd edition, by Richard Schwartz and Martha Sweezy (2019). The full clinical model, if you want depth.</li>
+        <li><strong>Glossary</strong>: my <a href="/ifs-glossary/">IFS glossary for leaders</a> defines every term on this page in a sentence or two.</li>
+      </ul>
+      <p class="ifs-note">Internal Family Systems and IFS are associated with the IFS Institute. This page reflects my own understanding and practice. I'm IFS-trained, but not affiliated with or endorsed by the Institute.</p>
+    </article>
+  </div>
+
+  <Final heading="Curious what your own" em="inner team looks like?" text="In a 20-minute call we can look at one pattern that's costing you, and you'll get a feel for how this works in practice." />
+</Base>
+
+<style>
+  .ifs-hero { padding-block: clamp(80px, 11vw, 150px); }
+  .ifs-hero .h1 { max-width: 1050px; }
+  .ifs-by { font-family: var(--mono); font-size: 14px; color: var(--on-dark-muted); }
+  .ifs-layout { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 64px; align-items: start; }
+  .ifs-toc { position: sticky; top: 96px; font-size: 15px; }
+  .ifs-toc ol { list-style: none; margin: 14px 0 0; padding: 0; border-top: 1px solid var(--rule); }
+  .ifs-toc li { border-bottom: 1px solid var(--rule); }
+  .ifs-toc a { display: block; padding: 9px 0; text-decoration: none; color: var(--muted); }
+  .ifs-toc a:hover { color: var(--brass); }
+  @media (max-width: 980px) {
+    .ifs-layout { grid-template-columns: 1fr; gap: 32px; }
+    .ifs-toc { position: static; }
+  }
+  .ifs-body h2 { padding-top: 1em; border-top: 1px solid var(--rule); }
+  .ifs-body h2:first-child { border-top: 0; padding-top: 0; margin-top: 0; }
+  .ifs-fig { margin: 2em 0; padding: 28px; background: #fff; border: 1px solid var(--rule); }
+  .ifs-fig figcaption { font-size: 15px; color: var(--muted-2); margin-top: 14px; text-align: center; }
+  .ifs-steps li { padding-left: 4px; }
+  .ifs-faq details { border-top: 1px solid var(--rule); padding: 14px 0; }
+  .ifs-faq details:last-child { border-bottom: 1px solid var(--rule); }
+  .ifs-faq summary { cursor: pointer; font-family: var(--serif); font-size: 24px; line-height: 1.25; }
+  .ifs-faq details p { margin-top: 10px; color: var(--muted); }
+  .ifs-note { font-size: 15px; color: var(--muted-2); }
+</style>

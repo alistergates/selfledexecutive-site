@@ -1,0 +1,116 @@
+---
+import Base from '../layouts/Base.astro';
+import Final from '../components/Final.astro';
+
+const seo = {
+  title: 'Outcomes: What Changes for Leaders After IFS-Informed Coaching | Self-Led Executive',
+  description: 'The concrete changes leaders notice after IFS-informed coaching: recovering from hard meetings in minutes, not days; teams that speak up; clearer decisions; calmer conflict; and a home life that stops carrying the strain.',
+};
+
+const groups = [
+  {
+    label: 'Under pressure', title: 'You recover in minutes, not days.',
+    intro: "The first change most leaders notice isn't that the hard moments stop. It's what happens afterwards.",
+    rows: [
+      ['A hostile client call ruins the rest of the day, and you replay it that night.', 'You\'re back on an even keel within half an hour, and you can say what got to you.'],
+      ['A contract dispute takes over your head. You ruminate, compute and assume it\'s your fault.', 'You handle it properly and it doesn\'t get under your skin. You\'re surprised how little it takes out of you.'],
+      ['You only see your reaction the next day.', 'You check in before the meeting, notice during it and do a quick review after. The gap between trigger and choice keeps getting wider.'],
+      ['Outside events, like a crisis, a market wobble or a bad board, spill into everything.', 'You can feel the anxiety and still keep it in proportion. You\'re steady enough for other people to lean on.'],
+    ],
+  },
+  {
+    label: 'With your team', title: 'You stop rescuing. They step up.',
+    intro: 'This one often surprises leaders, because the change in them shows up as a change in other people.',
+    rows: [
+      ['You explain the strategy again, at length, and check whether they "got it".', 'You ask, "How would you handle it?" and you wait. It\'s slower for a week and faster for a year.'],
+      ['Junior people go quiet around you and you can\'t work out why.', 'You notice the hesitant part and name it gently. People start telling you what\'s really going on.'],
+      ['You quietly hold onto the work that matters.', 'Someone you\'d underestimated gets the room to run with it and turns it around.'],
+      ['The leadership culture runs on blame, so people get defensive and act like children.', 'You can see the dynamic, name how it lands, and model something more adult.'],
+    ],
+  },
+  {
+    label: 'With peers and the board', title: 'Peer to peer, not parent and child.',
+    intro: 'Co-founders, chairs and senior colleagues can pull you straight back into old roles. That changes.',
+    rows: [
+      ['When your co-founder goes on the attack, you feel like a scared kid and go along with it.', 'You hold your ground calmly, tell them how it lands, and stay in the relationship.'],
+      ['You avoid conflict because, deep down, anger feels like it breaks things for good.', 'You can be in the disagreement and present at the same time. Things get resolved rather than smoothed over.'],
+      ['Critical board feedback sends you into a spiral of "not good enough".', 'You can take the feedback as information, get curious about it and use it.'],
+    ],
+  },
+  {
+    label: 'In decisions', title: 'More options, less tunnel vision.',
+    intro: 'When fear is driving, the options narrow to one. When it isn\'t, they open up again.',
+    rows: [
+      ['"I have to sell the company this year, whatever the price, because everything depends on it."', 'You focus on building the value of the company, and a sale becomes one option among several.'],
+      ['You run the business partly to fix problems at home.', 'You can separate what the business needs from what the family needs, and solve each properly.'],
+      ['Pride stops you asking for help, money or support that would take pressure off.', 'You ask. The pressure eases, and your attention goes back to what only you can do.'],
+      ['Ideas get lost in the noise.', 'You notice the opportunity in the room and act on it.'],
+    ],
+  },
+  {
+    label: 'At home', title: 'It stops landing on the people you love.',
+    intro: 'For many leaders, this is the outcome that matters most. It\'s often the one they came for.',
+    rows: [
+      ['You snap, or go cold, and only realise afterwards.', 'You catch the flash as it starts. You step out, steady yourself and come back, rather than exploding or disappearing for five hours.'],
+      ['When your partner is unhappy, you hear a list of your failings and defend yourself.', 'You hear what they\'re feeling underneath, and you can acknowledge it without it meaning you\'re a failure.'],
+      ['You\'re physically home but mentally at work all day.', 'You set boundaries between work and home, so when you\'re there, you\'re actually there.'],
+      ['You pass on what was passed to you.', 'You recognise the family pattern and decide it stops with you, for your kids\' sake.'],
+    ],
+  },
+];
+---
+<Base title={seo.title} description={seo.description}>
+  <section class="on-dark">
+    <div class="wrap section stack oc-hero">
+      <p class="label">Outcomes</p>
+      <h1 class="h1">What changes. <em>Not your personality, but your Monday.</em></h1>
+      <p class="lead">You keep your edge, your standards and your drive. What changes is who's in charge when the pressure's on, and you'll see it in specific moments at work and at home.</p>
+    </div>
+  </section>
+
+  {groups.map((g, i) => (
+    <section class:list={[{ 'tone-stone': i % 2 === 1 }]}>
+      <div class="wrap section stack-lg">
+        <div class="split">
+          <div class="stack"><p class="label">{String(i + 1).padStart(2, '0')} — {g.label}</p><h2 class="h2">{g.title}</h2></div>
+          <div class="split__body"><p>{g.intro}</p></div>
+        </div>
+        <div class="ba">
+          <div class="ba__head"><span class="label">Before</span><span class="label">After</span></div>
+          {g.rows.map(([b, a]) => <div class="ba__row"><p class="ba__b">{b}</p><p class="ba__a">{a}</p></div>)}
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <section class="on-dark">
+    <div class="wrap section split">
+      <div class="stack"><p class="label">How you'll know</p><h2 class="h2">It shows up <em>in moments.</em></h2></div>
+      <div class="split__body">
+        <p>We don't measure this with a survey. In each session we look at real moments from your week: what happened, who showed up in you, and what you did. Over a few months you start to notice the change yourself, usually first as surprise: "That should have rattled me, and it didn't."</p>
+        <p>One question leaders often ask is whether it lasts. It does if it becomes a habit. That's why the work moves from weekly to fortnightly and then to you doing it on your own. Old parts will still show up sometimes. The difference is that you'll recognise them, and you'll be the one deciding what happens next.</p>
+        <p class="small">The examples on this page are drawn from real client work and rewritten so no individual can be identified.</p>
+      </div>
+    </div>
+  </section>
+
+  <Final heading="Which of these" em="would change most for you?" text="Tell me on a 20-minute call. You'll get an honest view on whether this is the right work, and what it might change." />
+</Base>
+
+<style>
+  .oc-hero { padding-block: clamp(80px, 11vw, 150px); }
+  .oc-hero .h1 { max-width: 1050px; }
+  .ba { border-top: 1px solid var(--rule); }
+  .tone-stone .ba, .tone-stone .ba__row { border-color: var(--stone-rule); }
+  .ba__head, .ba__row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 48px; }
+  .ba__head { padding: 14px 0; border-bottom: 1px solid var(--rule); }
+  .ba__row { padding: 20px 0; border-bottom: 1px solid var(--rule); align-items: baseline; }
+  .ba__b { color: var(--muted-2); }
+  .ba__a { font-family: var(--serif); font-size: clamp(22px, 2vw, 27px); line-height: 1.2; }
+  @media (max-width: 760px) {
+    .ba__head { display: none; }
+    .ba__row { grid-template-columns: 1fr; }
+    .ba__b::before { content: 'Before: '; font-family: var(--mono); font-size: 13px; text-transform: uppercase; color: var(--brass); }
+  }
+  .small { font-size: 15px; color: var(--on-dark-muted); }
+</style>

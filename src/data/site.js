@@ -7,8 +7,9 @@ export const EMAIL = 'me@alistergates.com';
 export const GA_ID = '';
 
 export const nav = [
-  { label: 'Approach', href: '/approach/' },
-  { label: 'Work with me', href: '/work-with-me/' },
+  { label: 'What is IFS?', href: '/what-is-ifs/' },
+  { label: 'How I work', href: '/how-i-work/' },
+  { label: 'Outcomes', href: '/outcomes/' },
   { label: 'Journal', href: '/journal/' },
   { label: 'About', href: '/about/' },
 ];
@@ -17,14 +18,17 @@ export const cta = { label: 'Book a call', href: '/contact/' };
 
 export const footer = [
   { head: 'The work', links: [
-    ['Approach', '/approach/'],
-    ['Work with me', '/work-with-me/'],
+    ['How I work', '/how-i-work/'],
+    ['The programme', '/how-i-work/#programme'],
+    ['Outcomes', '/outcomes/'],
     ['Book a 20-minute call', '/contact/'],
   ]},
-  { head: 'Read', links: [
+  { head: 'IFS for leaders', links: [
+    ['What is IFS?', '/what-is-ifs/'],
+    ['IFS glossary', '/ifs-glossary/'],
     ['Journal', '/journal/'],
-    ['About Alister', '/about/'],
     ['Field Notes (email)', '/#field-notes'],
+    ['About Alister', '/about/'],
   ]},
   { head: 'Elsewhere', links: [
     ['Couples & individual counselling ↗', 'https://alistergates.com/'],
