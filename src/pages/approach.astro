@@ -1,0 +1,117 @@
+---
+import Base from '../layouts/Base.astro';
+import Final from '../components/Final.astro';
+import { SITE } from '../data/site.js';
+
+const seo = {
+  title: 'IFS for Leaders: How IFS-Informed Executive Coaching Works | Self-Led Executive',
+  description: 'How Internal Family Systems (IFS) works in executive coaching, in plain language. Why capable leaders keep repeating patterns, and what changes when Self leads instead of the parts.',
+};
+
+const faqs = [
+  { q: 'Do I need to know anything about IFS?', a: "No. Most of the leaders I work with had never heard of it. You don't need the theory. You only need to be willing to get curious about what goes on inside you when the pressure's on." },
+  { q: 'Is this therapy?', a: "No. It's coaching that draws on a model developed in therapy. We work with your leadership, your decisions and your relationships, not with diagnoses. I'm also a trained counsellor, so if something comes up that needs a different kind of support, I'll tell you plainly." },
+  { q: 'How is it different from other executive coaching?', a: "Most coaching works on what you do: goals, habits, feedback, skills. That's useful. This works on who's doing it. When the part that keeps hijacking you settles, a lot of the behaviour change takes care of itself." },
+  { q: 'Is it confidential?', a: "Completely. Nothing is shared with your employer, your board or anyone else. If your company is paying, they get an invoice and nothing more." },
+  { q: 'Where do sessions happen?', a: "Online, on video, wherever you are. I'm based in Zurich and work across European, Middle Eastern, US and Australasian time zones." },
+];
+
+const eightCs = [
+  ['Calm', 'Steady when the pressure spikes.'],
+  ['Clarity', 'Knowing what you actually think.'],
+  ['Curiosity', 'Asking before judging.'],
+  ['Compassion', 'For your people, and for yourself.'],
+  ['Confidence', 'The quiet kind that doesn\'t need an audience.'],
+  ['Courage', 'Saying the true thing.'],
+  ['Creativity', 'What shows up when the noise drops.'],
+  ['Connectedness', 'Present with the person in front of you.'],
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    { '@type': 'Service', name: 'IFS-informed executive coaching', serviceType: 'Executive coaching', url: `${SITE}/approach/`, description: seo.description, provider: { '@id': `${SITE}/#person` } },
+    { '@type': 'FAQPage', mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
+  ],
+};
+---
+<Base title={seo.title} description={seo.description} schema={schema}>
+  <section class="on-dark">
+    <div class="wrap section stack ap-hero">
+      <p class="label">The approach</p>
+      <h1 class="h1">You don't have a behaviour problem. <em>You have a leadership problem, on the inside.</em></h1>
+      <p class="lead">Here's how IFS-informed coaching works, without the jargon. It's why insight alone rarely changes anything, and what does.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap section split">
+      <div class="stack"><p class="label">01 — Why insight isn't enough</p><h2 class="h2">You already know <em>what you should do.</em></h2></div>
+      <div class="split__body">
+        <p>You know you should delegate. You know you should have that conversation, stop checking email at dinner, and let the team make mistakes. Knowing isn't the problem.</p>
+        <p>The problem is that in the moment, something else decides. A part of you that's been doing a job for years steps in, takes the wheel and does what it's always done. By the time you notice, it's over.</p>
+        <p>You can't out-discipline that, and you can't argue it out of you. Believe me, clever people try. A part that's protecting you from something doesn't stand down because you've had a good idea. It stands down when it trusts that someone more capable is in charge.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="tone-stone">
+    <div class="wrap section split">
+      <div class="stack"><p class="label">02 — The model, briefly</p><h2 class="h2">Parts, protectors, <em>and Self.</em></h2></div>
+      <div class="split__body">
+        <p>Internal Family Systems (IFS) was developed by Dr Richard Schwartz. It starts from something most of us already feel: the mind isn't one thing. It's a system of parts, each with its own job, its own fears and its own idea of what keeps you safe.</p>
+        <p><strong>Protectors</strong> are the parts you see at work. One drives, one controls, one pleases, one criticises, one blows up or numbs out when it all gets too much. Each one formed for a good reason, often long before you had a company or a team.</p>
+        <p><strong>What they protect</strong> is usually older and more tender: the kid who had to be good, the young professional who couldn't afford to fail, the founder who nearly lost everything. The protectors work so hard because they don't want you to feel that again.</p>
+        <p><strong>Self</strong> is what's left when the protectors relax. It isn't a part, and it isn't something you have to build. It's the steady, clear-headed leader you are at your best. IFS describes it with eight Cs.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="on-dark">
+    <div class="wrap section stack-lg">
+      <div class="stack"><p class="label">03 — What Self-leadership looks like</p><h2 class="h2">The eight Cs, <em>in a leadership role.</em></h2></div>
+      <div class="grid cs">
+        {eightCs.map(([c, t]) => <div class="cell"><h3 class="h3">{c}</h3><p>{t}</p></div>)}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap section split">
+      <div class="stack"><p class="label">04 — What a session looks like</p><h2 class="h2">Real situations, <em>not theory.</em></h2></div>
+      <div class="split__body">
+        <p>We start with something live. The investor call that rattled you, the head of sales you can't bring yourself to let go, the fight at home on Sunday night.</p>
+        <p>Then we slow it right down. Who showed up in that moment? What was it worried would happen? How old does it think you are? Leaders are often surprised how quickly this gets somewhere real, and how practical it is.</p>
+        <p>When a protector feels understood, it eases off. You get room to choose. Then we take that back into the week ahead: the meeting on Tuesday, the conversation you've been avoiding, the way you walk in the door at night.</p>
+        <p>It isn't soft. Some of the most direct conversations I have are in this work. But it's never about forcing yourself to be different. That's the old system at work again.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="tone-stone">
+    <div class="wrap section split">
+      <div class="stack"><p class="label">05 — Questions</p><h2 class="h2">What leaders <em>usually ask.</em></h2></div>
+      <div class="split__body faq">
+        {faqs.map((f) => <details><summary>{f.q}</summary><p>{f.a}</p></details>)}
+        <p class="note">A note on the name: I'm trained in Internal Family Systems, and this work is IFS-informed. I'm not affiliated with or endorsed by the IFS Institute.</p>
+      </div>
+    </div>
+  </section>
+
+  <Final heading="Curious what's running" em="your system?" text="A 20-minute call is the easiest way to find out whether this approach fits how you work." />
+</Base>
+
+<style>
+  .ap-hero { padding-block: clamp(80px, 11vw, 150px); }
+  .ap-hero .h1 { font-size: clamp(42px, 6vw, 84px); max-width: 1050px; }
+  .cs { grid-template-columns: repeat(4, 1fr); }
+  @media (max-width: 900px) { .cs { grid-template-columns: repeat(2, 1fr); } }
+  .faq details { border-top: 1px solid var(--stone-rule); padding: 18px 0; }
+  .faq details:last-of-type { border-bottom: 1px solid var(--stone-rule); }
+  .faq summary { cursor: pointer; font-family: var(--serif); font-size: 26px; line-height: 1.2; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: '+'; font-family: var(--mono); color: var(--brass); }
+  .faq details[open] summary::after { content: '–'; }
+  .faq details p { margin-top: 12px; color: var(--muted); }
+  .faq .note { font-size: 15px; color: var(--muted-2); }
+</style>

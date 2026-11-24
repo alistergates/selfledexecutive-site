@@ -1,0 +1,39 @@
+---
+import { nav, cta } from '../data/site.js';
+const here = Astro.url.pathname;
+---
+<header class="site-header">
+  <div class="wrap site-header__bar">
+    <a class="brand" href="/" aria-label="The Self-Led Executive, home"><span class="brand__mark">Self-Led <em>Executive</em></span></a>
+    <nav class="nav" aria-label="Main">
+      {nav.map((item) => <a href={item.href} aria-current={here.startsWith(item.href) ? 'page' : undefined}>{item.label}</a>)}
+      <a class="btn btn--light" href={cta.href}>{cta.label}</a>
+    </nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu">
+      <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="4" y1="8" x2="20" y2="8"></line><line x1="4" y1="16" x2="20" y2="16"></line></svg>
+    </button>
+  </div>
+  <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile">
+    {nav.map((item) => <a href={item.href}>{item.label}</a>)}
+    <a class="btn btn--light" href={cta.href}>Book a 20-minute call</a>
+  </nav>
+</header>
+<script>
+  const header = document.querySelector('.site-header');
+  const menu = document.getElementById('mobile-nav');
+  let lastY = window.scrollY, ticking = false;
+  const update = () => {
+    const y = window.scrollY;
+    const open = menu?.classList.contains('is-open');
+    if (open || y < 120 || y < lastY - 4) header?.classList.remove('is-hidden');
+    else if (y > lastY + 4) header?.classList.add('is-hidden');
+    lastY = y; ticking = false;
+  };
+  window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+  const btn = document.querySelector('.menu-btn');
+  btn?.addEventListener('click', () => {
+    const isOpen = menu?.classList.toggle('is-open');
+    btn.setAttribute('aria-expanded', String(!!isOpen));
+    btn.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+  });
+</script>

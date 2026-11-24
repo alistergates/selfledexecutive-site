@@ -1,0 +1,27 @@
+---
+// Email sign-up. Stored as a Netlify form submission ("field-notes") until a mailing tool is chosen.
+interface Props { id?: string }
+const { id = 'field-notes' } = Astro.props;
+---
+<section class="fn tone-stone" id={id}>
+  <div class="wrap section fn__inner">
+    <div class="stack fn__text">
+      <p class="label">Field Notes · by email</p>
+      <h2 class="h2">One idea a month for leaders <em>doing the inner work.</em></h2>
+      <p class="lead">Short, practical notes on the patterns that run people at the top: the parts that drive, avoid, please and control, and what changes when they stop running the show. No spam, no selling. Unsubscribe any time.</p>
+    </div>
+    <form class="form fn__form" name="field-notes" method="POST" action="/thank-you/?f=notes" data-netlify="true" netlify-honeypot="company">
+      <input type="hidden" name="form-name" value="field-notes" />
+      <p class="visually-hidden"><label>Leave this empty: <input name="company" tabindex="-1" autocomplete="off" /></label></p>
+      <label>First name<input type="text" name="name" autocomplete="given-name" required /></label>
+      <label>Email<input type="email" name="email" autocomplete="email" required /></label>
+      <label class="check"><input type="checkbox" name="consent" required /> <span>Send me Field Notes. I've read the <a href="/privacy-policy/">privacy policy</a>.</span></label>
+      <button class="btn" type="submit">Sign me up</button>
+    </form>
+  </div>
+</section>
+<style>
+  .fn__inner { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 40px 72px; align-items: end; }
+  .fn__form { background: var(--paper); border: 1px solid var(--stone-rule); padding: clamp(22px, 3vw, 34px); }
+  @media (max-width: 860px) { .fn__inner { grid-template-columns: 1fr; } }
+</style>

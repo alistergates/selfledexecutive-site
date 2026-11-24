@@ -1,0 +1,12 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Password gate for the dev site. It only switches on when the SITE_PASSWORD
+# environment variable is set in Netlify; remove that variable at launch.
+[[edge_functions]]
+  path = "/*"
+  function = "protect"

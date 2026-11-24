@@ -1,0 +1,21 @@
+---
+import { posts, fmtDate } from '../data/posts';
+interface Props { limit?: number }
+const { limit } = Astro.props;
+const list = limit ? posts.slice(0, limit) : posts;
+---
+<div class="grid posts">
+  {list.map((p) => (
+    <a class="cell post" href={p.url}>
+      <p class="label">{p.kicker || 'Journal'} · {fmtDate(p.date)}</p>
+      <h3 class="h3">{p.title}</h3>
+      <p>{p.description}</p>
+      <span class="textlink post__more">Read →</span>
+    </a>
+  ))}
+</div>
+<style>
+  .post { text-decoration: none; }
+  .post:hover .h3 { color: var(--brass); }
+  .post__more { margin-top: auto; padding-top: 8px; color: var(--brass); }
+</style>

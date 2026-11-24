@@ -1,0 +1,20 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Thank you | The Self-Led Executive" hidden={true}>
+  <section>
+    <div class="wrap section stack ty">
+      <p class="label" id="ty-label">Received</p>
+      <h1 class="h1" id="ty-head">Thanks. <em>It's on its way to me.</em></h1>
+      <p class="lead" id="ty-text">I'll get back to you, usually within a day, to find a time for our call.</p>
+      <p><a class="btn" href="/journal/">Read the journal while you wait</a></p>
+    </div>
+  </section>
+</Base>
+<script>
+  if (new URLSearchParams(location.search).get('f') === 'notes') {
+    const t = document.getElementById('ty-text');
+    if (t) t.textContent = "You're on the list for Field Notes. The next one lands in your inbox at the start of the month.";
+  }
+</script>
+<style>.ty { max-width: 860px; }</style>

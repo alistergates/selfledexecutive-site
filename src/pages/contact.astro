@@ -1,0 +1,47 @@
+---
+import Base from '../layouts/Base.astro';
+import { EMAIL } from '../data/site.js';
+const seo = {
+  title: 'Book a 20-Minute Call | The Self-Led Executive',
+  description: 'Book a free, confidential 20-minute call with Alister Gates about IFS-informed executive coaching. Online, any time zone.',
+};
+---
+<Base title={seo.title} description={seo.description}>
+  <section>
+    <div class="wrap section ct">
+      <div class="stack ct__intro">
+        <p class="label">Free · 20 minutes · confidential</p>
+        <h1 class="h1">Let's see if this <em>is the right work.</em></h1>
+        <p class="lead">Tell me a little about where you are. I'll come back to you, usually within a day, to find a time that suits your time zone.</p>
+        <ul class="rules ct__facts">
+          <li><span class="label">Length</span> About 20 minutes</li>
+          <li><span class="label">Format</span> Video call</li>
+          <li><span class="label">Cost</span> Free, no obligation</li>
+          <li><span class="label">Pricing</span> Happy to cover it on the call</li>
+        </ul>
+        <p class="small">Prefer email? <a href={`mailto:${EMAIL}`}>{EMAIL}</a></p>
+      </div>
+      <form class="form ct__form" name="contact" method="POST" action="/thank-you/" data-netlify="true" netlify-honeypot="company">
+        <input type="hidden" name="form-name" value="contact" />
+        <p class="visually-hidden"><label>Leave this empty: <input name="company" tabindex="-1" autocomplete="off" /></label></p>
+        <label>Name<input type="text" name="name" autocomplete="name" required /></label>
+        <label>Email<input type="email" name="email" autocomplete="email" required /></label>
+        <label>Your role <span class="opt">(optional)</span><input type="text" name="role" placeholder="e.g. Founder & CEO, 40-person SaaS company" /></label>
+        <label>Where are you based?<input type="text" name="location" placeholder="City, country" required /></label>
+        <label>What's going on? <span class="opt">(a sentence or two is plenty)</span><textarea name="message" rows="5" maxlength="1500"></textarea></label>
+        <label>How did you find me? <span class="opt">(optional)</span><input type="text" name="source" /></label>
+        <label class="check"><input type="checkbox" name="privacy" required /> <span>I've read the <a href="/privacy-policy/">privacy policy</a>.</span></label>
+        <button class="btn" type="submit">Request a call</button>
+      </form>
+    </div>
+  </section>
+</Base>
+<style>
+  .ct { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: 48px 72px; align-items: start; }
+  @media (max-width: 900px) { .ct { grid-template-columns: 1fr; } }
+  .ct__intro .h1 { font-size: clamp(44px, 5.6vw, 80px); }
+  .ct__facts li { display: flex; gap: 16px; align-items: baseline; }
+  .ct__facts .label { min-width: 90px; }
+  .ct__form { background: #fff; border: 1px solid var(--rule); padding: clamp(22px, 3vw, 36px); }
+  .small { font-size: 15px; color: var(--muted-2); }
+</style>

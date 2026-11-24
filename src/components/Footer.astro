@@ -1,0 +1,22 @@
+---
+import { footer, GA_ID } from '../data/site.js';
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="wrap site-footer__top">
+    <div class="site-footer__col">
+      <p class="site-footer__tag">IFS-informed coaching for founders and senior leaders.</p>
+      <span>With Alister Gates. Online, worldwide. Based in Zurich.</span>
+    </div>
+    {footer.map((col) => (
+      <div class="site-footer__col">
+        <span class="site-footer__head">{col.head}</span>
+        {col.links.map(([label, href]) => href.startsWith('http') ? <a href={href} target="_blank" rel="noopener">{label}</a> : <a href={href}>{label}</a>)}
+      </div>
+    ))}
+  </div>
+  <div class="wrap site-footer__base">
+    <span>© {year} Youneek Limited, trading as Alister Gates</span>
+    <span><a href="/privacy-policy/">Privacy policy</a>{GA_ID && <> · <a href="/privacy-policy/#cookies" data-cookie-settings>Cookie settings</a></>}</span>
+  </div>
+</footer>

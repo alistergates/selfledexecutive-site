@@ -1,0 +1,43 @@
+---
+import Base from '../layouts/Base.astro';
+import { EMAIL, GA_ID } from '../data/site.js';
+---
+<Base title="Privacy Policy | The Self-Led Executive" description="How Youneek Limited, trading as Alister Gates, collects, uses and protects personal information on selfledexecutive.com.">
+  <article class="wrap section stack" style="max-width:860px">
+    <p class="label">Small print</p>
+    <h1 class="h1" style="font-size:clamp(44px,5vw,72px)">Privacy policy</h1>
+    <div class="prose">
+      <h2>1. Who we are</h2>
+      <p>This website, selfledexecutive.com, is run by Youneek Limited, a company registered in New Zealand, trading as Alister Gates ("we", "us", "our"). We provide coaching and related services to clients internationally.</p>
+      <h2>2. What we collect</h2>
+      <ul>
+        <li>What you send through the contact form: name, email, role, location and your message</li>
+        <li>Your name and email address if you sign up for Field Notes</li>
+        <li>Appointment details, correspondence and billing information if we work together</li>
+        <li>Basic technical data about website use (see section 7)</li>
+      </ul>
+      <p>We only collect what we need to reply to you, provide our services and meet legal and administrative obligations.</p>
+      <h2>3. How we use it</h2>
+      <ul>
+        <li>To reply to your enquiry and arrange a call</li>
+        <li>To send Field Notes, if you asked for them. Every email has an unsubscribe link</li>
+        <li>To provide coaching, manage appointments and invoice</li>
+      </ul>
+      <p>We do not sell, rent or trade your personal data.</p>
+      <h2>4. Confidentiality</h2>
+      <p>What you share in sessions is confidential. Nothing is reported to your employer, board or anyone else, including when your organisation pays. Confidentiality may only be broken where the law requires it, or where there is a serious and immediate risk of harm to you or others.</p>
+      <h2>5. Third-party providers</h2>
+      <p>Forms on this site are handled by our hosting provider, Netlify. Payments are processed by third-party payment providers and banks; we do not store card details. Online sessions use video platforms, and while we take reasonable care, no online system can be guaranteed completely secure.</p>
+      <h2>6. Storage and your rights</h2>
+      <p>We keep personal information only as long as needed for the purposes above and for legal and accounting requirements, and we take reasonable steps to protect it. As we work internationally, data may be processed in different countries. You can ask to see, correct or delete your information at any time (subject to record-keeping obligations).</p>
+      <h2 id="cookies">7. Cookies and analytics</h2>
+      {GA_ID
+        ? <p>This website uses Google Analytics to understand which pages are useful. Analytics cookies are only set if you click "Accept" in the cookie banner. IP addresses are anonymised and the data isn't used for advertising. You can change your choice any time with "Cookie settings" in the footer.</p>
+        : <p>This website does not currently use analytics or advertising cookies. If that changes, you'll be asked for your consent first, and this policy will be updated.</p>}
+      <h2>8. Changes</h2>
+      <p>We may update this policy from time to time. The current version is always on this page.</p>
+      <h2>9. Contact</h2>
+      <p>Questions about your data: <a href={`mailto:${EMAIL}`}>{EMAIL}</a>.</p>
+    </div>
+  </article>
+</Base>
